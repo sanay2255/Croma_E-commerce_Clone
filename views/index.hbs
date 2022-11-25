@@ -25,15 +25,38 @@
                     <li class="nav-item">
                         <a class="nav-link active text-light" aria-current="page" href="#"></a>
                     </li>
-
+                    
                 </ul>
+
+
+
+                 <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-light border-0" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            More
+                        </a>
+                        
+                        <ul class="dropdown-menu mt-2" aria-labelledby="navbarDropdown">
+                            {{#each more}}
+
+                            <li><a class="dropdown-item" href="#"> {{this.text}}</a></li>
+                            {{/each}}
+                        </ul>
+                        
+                        
+                    </li>
+
+
+
                 {{#if user}}
                 <span class="text-white mx-3">{{user.name}}</span>
                 {{else}}
                 logIn
                 {{/if}}
-                <button class="btn btn-outline-success text-light"  name="sign_out"  type="submit"><a style="text-decoration:none" class="text-light" href="/logout">Logout</a></button>a
-                
+                <button class="btn btn-outline-success text-light" name="sign_out" type="submit"><a
+                        style="text-decoration:none" class="text-light" href="/logout">Logout</a></button>a
+               
+
             </div>
         </div>
     </nav>
@@ -46,7 +69,7 @@
                     aria-label="Slide 2"></button>
                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
                     aria-label="Slide 3"></button>
-            </div> 
+            </div>
             <div class="carousel-inner ">
                 <div class="carousel-item active">
                     <img src="/images/carousel1.avif" class="d-block w-100" alt="...">
@@ -88,23 +111,24 @@
         </div>
     </section>
     <section>
-        
+
         <div class="container mt-5">
-            <h1 class=" text-info">offers</h1>
+            <h3 class=" text-info">Offers</h3>
             <div class="row pt-4">
                 {{#each products}}
                 <div class="col-md-3">
                     <div class="card " style="width: 15rem;">
-                        <img class="card-img-top w-100" style="width: 12rem;height:15rem" src="{{this.image}}" alt="Card image cap">
+                        <img class="card-img-top w-100" style="width: 10rem;height:12rem" src="{{this.image}}"
+                            alt="Card image cap">
                         <div class="card-body">
                             <h5 class="card-title">{{this.name}}</h5>
                             <p class="card-text">{{this.description}}</p>
-                            
+
                             <a href="#" class="btn btn-primary">Add to cart</a>
                         </div>
                     </div>
                 </div>
-               {{/each}} 
+                {{/each}}
             </div>
         </div>
 
@@ -113,12 +137,12 @@
         <div class="container">
             <h3 class="text-info pt-4">Highlights</h3>
             <div class="row pt-5">
-            {{#each highlights}}
-            <div class="col-md-4">
-                <img class="w-100 pb-3" src="{{image}}" alt="">
+                {{#each highlights}}
+                <div class="col-md-4">
+                    <img class="w-100 pb-3" src="{{image}}" alt="">
+                </div>
+                {{/each}}
             </div>
-             {{/each}}
-             </div>
         </div>
     </section>
 

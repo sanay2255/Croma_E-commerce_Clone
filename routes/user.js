@@ -80,8 +80,21 @@ router.get('/home', function (req, res, next) {
   }
 ]
 // console.log(req.session.user);
-
-  res.render('index', { products ,categories,highlights,user:req.session.user});
+let more=[{
+  image:"",
+  text:"Perferencee"
+},
+{
+  text:"Customer Care"
+},
+{
+  text:"Advertise"
+},
+{
+  text:"Download App"
+}
+]
+  res.render('index', { products ,more,categories,highlights,user:req.session.user});
 });
 
 
