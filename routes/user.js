@@ -2,9 +2,14 @@ var express = require('express');
 var router = express.Router();
 
 router.get('/', function (req, res, next) {
-
+  console.log(req.session.loggedIn)
+  if(req.session.loggedIn){
+    res.redirect('/home')
+  }else{
   res.render('login',{error:req.session.loginError});
+  }
   req.session.loginError=false
+  
 });
 
 
@@ -94,28 +99,35 @@ let more=[{
   text:"Download App"
 }
 ]
+if(req.session.loggedIn){
   res.render('index', { products ,more,categories,highlights,user:req.session.user});
+}else{
+  res.redirect('/')
+
+}
+  
 });
 
 
 
 
 router.post('/login', function (req, res, next) {
+  
   const details = {
     username: "sanayuj2255@gmail.com",
     name:"Sanay",
     password: "123"
   }
   if (details.username === req.body.username && details.password === req.body.password) {
-   n=true;
+    req.session.loggedIn=true;
     req.session.user=details
     res.redirect('home');
 
   } else {
-    req.session.loggedIn=true
     req.session.loginError=true
     res.redirect('/')
   } 
+
 });
 
 router.get('/logout',(req,res)=>{
